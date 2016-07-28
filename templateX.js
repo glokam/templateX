@@ -12,10 +12,12 @@ var templateX = {};
             return _render(template);
         },
         getdata = function (opt) {
+            return opt.strBegining + _renderTag(opt.substring) + opt.strEnding;
         };
     
         //Private utilities
     
+        function _renderTag(tagStr) {
             var dataObj = data,
                 ns = tagStr.split('.'),
                 i;
