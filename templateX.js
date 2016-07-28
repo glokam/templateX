@@ -1,43 +1,54 @@
+"use strict";
 var templateX = {};
 
 (function (nspace, alias) {
-    "use strict";
-    var getdata = function (substring, data) {
-        var dataObj = data,
-            tempData,
-            ns = substring.split('.'),
-            i;
-        
-        if (ns.length === 1 && data[ns[0]]) {
-            return data[ns[0]];
-        } else if (!data[ns[0]]) {
-            return '';
-        }
-        
-        for (i = 0; i < ns.length; i++) {
-            if (ns[i] === '') {
-                dataObj = data;
-                continue;
-            }
-            if (dataObj[ns[i]]) {
-                dataObj = dataObj[ns[i]];
-            } else {
-                dataObj = '';
-                break;
-            }
-        }
-        
-        return dataObj;
-    },
     
+    var data = null,
+        
+        //Public method render(html string, object with data )
+        
+        tX = nspace.render = function (template, dataObj) {
+            data = dataObj;
+            return _render(template);
+        },
+        getdata = function (opt) {
+        };
     
-        tX = nspace.render = function (template, data) {
+        //Private utilities
+    
+            var dataObj = data,
+                ns = tagStr.split('.'),
+                i;
+        
+            if (ns.length === 1 && data[ns[0]]) {
+                return data[ns[0]];
+            } else if (!data[ns[0]]) {
+                return '';
+            };
+            
+            for (i = 0; i < ns.length; i++) {
+                if (ns[i] === '') {
+                    dataObj = data;
+                    continue;
+                };
+                if (dataObj[ns[i]]) {
+                    dataObj = dataObj[ns[i]];
+                } else {
+                    dataObj = '';
+                    break;
+                };
+            };
+            return dataObj;
+        };
+    
+        function _render(template) {
+            
             var indexStart = template.indexOf('{{'),
                 indexEnd = template.indexOf('}}'),
                 opt,
                 substring,
                 toReplace = '';
-            
+                
             if (indexStart === -1 || indexEnd === -1) {
                 return template.replace(/\%\{/gi, '{');
             }
@@ -48,11 +59,11 @@ var templateX = {};
                 substring: template.slice(indexStart + 2, indexEnd)
             };
         
-            return tX(opt.strBegining + getdata(opt.substring, data) + opt.strEnding, data);
+            return _render(getdata(opt));
         };
     
         //set short alias for templateX;
     if (nspace.tX === undefined && alias) { 
         nspace.tX = tX;
-    }
+    };
 }(templateX, true));
