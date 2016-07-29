@@ -1,9 +1,18 @@
 "use strict";
 var templateX = {};
-
+//pollyfills
+(function () {
+    if (!Array.isArray) {
+        console.log('ok');
+        Array.isArray = function(arg) {
+            return Object.prototype.toString.call(arg) === '[object Array]';
+        };
+    }
+}());
 (function (nspace, alias) {
     
     var data = null,
+        tempData = null,
         
         //Public method render(html string, object with data )
         
@@ -12,15 +21,16 @@ var templateX = {};
             return  _render(template);
         },
         getdata = function (opt) {
-            var tag = opt.substring; 
-            if (tag.charAt(0) === '#') return _ifStatement(opt, true);
-            if (tag.charAt(0) === '^') return _ifStatement(opt, false);
+            var tag = opt.substring,
+                firstChar = tag.charAt(0);
+            if (firstChar === '#') return _ifStatement(opt, true);
+            if (firstChar === '^') return _ifStatement(opt, false);
+            if (firstChar === '[') return _iterate(opt);
             return opt.strBegining + _renderTag(opt.substring) + opt.strEnding;
         };
     
         //Private utilities
         function _render(template) {
-            console.log(template);
             var indexStart = template.indexOf('{{'),
                 indexEnd = template.indexOf('}}'),
                 opt,
@@ -38,6 +48,29 @@ var templateX = {};
             };
         
             return _render(getdata(opt));
+        };
+        function _iterate(opt) {
+            var tag = opt.substring.slice(1),
+                endTag = '{{/' + tag + '}}',
+                indexEnd = opt.strEnding.indexOf(endTag),
+                cont = '', templ, val;    
+                
+            if (indexEnd === -1) { console.error("Missing ending tag for {{" + opt.substring + "}}!!");}
+                
+                val = _renderTag(tag);
+            
+                if (!(Array.isArray(val))) { return _ifStatement(opt, true);}
+                templ = opt.strEnding.slice(0, indexEnd);
+                opt.strEnding = opt.strEnding.slice(indexEnd + endTag.length);
+                tempData = data;
+                for (var i = 0; i < val.length; i++) {
+                    data = val[i];
+                    cont += _render(templ);
+                }
+                data = tempData;
+                tempData = null;
+                return opt.strBegining + cont + opt.strEnding;
+            
         };
         function _ifStatement(opt, bol) {
             var tag = opt.substring.slice(1),
