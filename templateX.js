@@ -3,7 +3,6 @@ var templateX = {};
 //pollyfills
 (function () {
     if (!Array.isArray) {
-        console.log('ok');
         Array.isArray = function(arg) {
             return Object.prototype.toString.call(arg) === '[object Array]';
         };
@@ -107,16 +106,17 @@ var templateX = {};
             var dataObj = data,
                 ns = tagStr.split('.'),
                 i;
-        
-            if (ns.length === 1 && data[ns[0]]) {
-                return data[ns[0]];
-            } else if (!data[ns[0]]) {
-                return '';
-            };
+            
+            if (ns.length === 1) {
+                 if (data[ns[0]]) { 
+                     return data[ns[0]] 
+                 } else { return ''}
+                    
+            }
             
             for (i = 0; i < ns.length; i++) {
                 if (ns[i] === '') {
-                    dataObj = data;
+                    dataObj = (tempData)? tempData : data;
                     continue;
                 };
                 if (dataObj[ns[i]]) {
