@@ -1,0 +1,20 @@
+{
+  "name": "tempatex",
+  "version": "1.0.0",
+  "description": "Simple templates",
+  "main": "templateX.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glokam/templateX.git"
+  },
+  "author": "Kamil Głowacki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glokam/templateX/issues"
+  },
+  "homepage": "https://github.com/glokam/templateX#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0"
+  }
+}
