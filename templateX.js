@@ -124,8 +124,7 @@ var templateX = {};
             };
             
             if (typeof dataObj === 'string' && !confide) {
-                dataObj = dataObj.replace(ltReg, '&lt').replace('>', '&gt')
-                console.log(dataObj);
+                dataObj = dataObj.replace(ltReg, '&lt;').replace('>', '&gt;');
             }
             
             return dataObj;
