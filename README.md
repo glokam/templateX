@@ -2,6 +2,8 @@
 ## Simple templates
 
 ### Getting Started
+
+template e.g:
 ```
 <script id='x-template' type='text/template'>
 
@@ -9,7 +11,7 @@
 
 </script>
 ```
-
+render e.g.
 ```
 var source = document.getElementById('x-template').innerHTML; // or $('#x-template).html()
 
@@ -24,17 +26,19 @@ var obj = {
     
 var template = templateX.render(source, obj);       
 ```
-
+result:
 ```
 
 John Doe - programmer
 ```
 
 ### HTML
+
+data:
 ```
 {text: '<h1>Lorem Ipsum</h1>'}
 ```
-
+result:
 ```
 {{text}} // &lt;h1&gt;Lorem Ipsum&lt;/h1&gt;
 
@@ -42,21 +46,22 @@ John Doe - programmer
 ```
 
 ### Conditional Blocks
+
+"False" Condition:
 ```
 {{^property}}Show this when property is: 0, "", false, undefined, null, NaN or empty []. {{/property}}
 ```
 
+"True" Condition
 ```
-{{%property}}Show this when property is everything else.{{/property}}
+{{%property}}Show this when property is everything else.{{/property}} //no looping
+
+{{#property}}Show this when property is everything else.{{/property}} //looping when array
 ```
 
 ### Loop
-```
-<ul>
-    {{#books}}<li>{{author}} - {{title}} </li>{{/books}}
-</ul>
-```
 
+data:
 ```
     {
     category: "science fiction",
@@ -67,7 +72,13 @@ John Doe - programmer
     ]
     }
 ```
-
+template:
+```
+<ul>
+    {{#books}}<li>{{author}} - {{title}} </li>{{/books}}
+</ul>
+```
+result:
 ```
 
 <ul>
@@ -77,13 +88,10 @@ John Doe - programmer
 </ul>
 ```
 
-### Back To Main Data When Loop
-```
-<ul>
-    {{#books}}<li>{{author}} - {{title}} ; {{.category}} </li>{{/books}}
-</ul>
-```
 
+### Back To Main Data In Loop
+
+data:
 ```
     {
     category: "science fiction",
@@ -94,7 +102,13 @@ John Doe - programmer
     ]
     }
 ```
-
+template:
+```
+<ul>
+    {{#books}}<li>{{author}} - {{title}} ; {{.category}} </li>{{/books}}
+</ul>
+```
+result:
 ```
 
 <ul>
