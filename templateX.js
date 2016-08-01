@@ -12,6 +12,8 @@ var templateX = {};
     
     var data = null,
         tempData = null,
+        ltReg = /</g,
+        gtReg = />/g,
         
         //Public method render(html string, object with data )
         
@@ -22,9 +24,10 @@ var templateX = {};
         getdata = function (opt) {
             var tag = opt.substring,
                 firstChar = tag.charAt(0);
-            if (firstChar === '#') return _ifStatement(opt, true);
+            if (firstChar === '%') return _ifStatement(opt, true);
             if (firstChar === '^') return _ifStatement(opt, false);
-            if (firstChar === '[') return _iterate(opt);
+            if (firstChar === '#') return _iterate(opt);
+            if (firstChar === '&') return opt.strBegining + _renderTag(opt.substring.slice(1), true) + opt.strEnding;
             return opt.strBegining + _renderTag(opt.substring) + opt.strEnding;
         };
     
@@ -102,17 +105,10 @@ var templateX = {};
             }
             
         };
-        function _renderTag(tagStr) {
+        function _renderTag(tagStr, confide) {
             var dataObj = data,
                 ns = tagStr.split('.'),
-                i;
-            
-            if (ns.length === 1) {
-                 if (data[ns[0]]) { 
-                     return data[ns[0]] 
-                 } else { return ''}
-                    
-            }
+                i;            
             
             for (i = 0; i < ns.length; i++) {
                 if (ns[i] === '') {
@@ -126,6 +122,12 @@ var templateX = {};
                     break;
                 };
             };
+            
+            if (typeof dataObj === 'string' && !confide) {
+                dataObj = dataObj.replace(ltReg, '&lt').replace('>', '&gt')
+                console.log(dataObj);
+            }
+            
             return dataObj;
         };
     
