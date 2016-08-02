@@ -10,7 +10,8 @@ module.exports = function(grunt) {
             },
             my_target: {
             files: {
-                'templateX.min.js': ['templateX.js']
+                'templateX.min.js': ['templateX.js'],
+                'jQuery_plugin/templateX.jq.min.js': ['jQuery_plugin/templateX.jq.js']
                 }
             }
         }

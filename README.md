@@ -3,7 +3,9 @@
 
 ### Getting Started
 
-template e.g:
+Add templateX to your site... 
+
+Build template...
 ```
 <script id='x-template' type='text/template'>
 
@@ -11,7 +13,8 @@ template e.g:
 
 </script>
 ```
-render e.g.
+
+Render template...
 ```
 var source = document.getElementById('x-template').innerHTML; // or $('#x-template).html()
 
@@ -26,42 +29,61 @@ var obj = {
     
 var template = templateX.render(source, obj);       
 ```
-result:
+
+Result:
 ```
 
 John Doe - programmer
 ```
 
-### HTML
+Use your template...
+```
+\\ HTML
 
-data:
+<p id='person'></p>
+
+\\ jQ
+
+$('#person').html(template);
+
+```
+and that's all :-)
+
+### How to render HTML?
+
 ```
 {text: '<h1>Lorem Ipsum</h1>'}
 ```
-result:
+Standard X-tag don`t render html tags in strings...
 ```
 {{text}} // &lt;h1&gt;Lorem Ipsum&lt;/h1&gt;
+```
+...if you want render html use '&' prefix:
 
+```
 {{&text}} // <h1>Lorem Ipsum</h1>
 ```
 
 ### Conditional Blocks
 
-"False" Condition:
+You can use 3 conditional statements.
+
+One 'false' statement...
 ```
 {{^property}}Show this when property is: 0, "", false, undefined, null, NaN or empty []. {{/property}}
 ```
 
-"True" Condition
+...and two 'true' statements:
 ```
 {{%property}}Show this when property is everything else.{{/property}} //no looping
 
 {{#property}}Show this when property is everything else.{{/property}} //looping when array
 ```
+...the '#' prefix is also a loop...
 
 ### Loop
 
-data:
+When you have array with objects...
 ```
     {
     category: "science fiction",
@@ -72,13 +94,15 @@ data:
     ]
     }
 ```
-template:
+
+...you can iterate them with the '#' loop:
 ```
 <ul>
     {{#books}}<li>{{author}} - {{title}} </li>{{/books}}
 </ul>
 ```
-result:
+
+Result:
 ```
 
 <ul>
@@ -88,10 +112,9 @@ result:
 </ul>
 ```
 
-
 ### Back To Main Data In Loop
 
-data:
+...and if you want use some other property in the '#' loop...
 ```
     {
     category: "science fiction",
@@ -102,13 +125,15 @@ data:
     ]
     }
 ```
-template:
+
+...it`s easy too, just use '.' prefix...
 ```
 <ul>
     {{#books}}<li>{{author}} - {{title}} ; {{.category}} </li>{{/books}}
 </ul>
 ```
-result:
+
+...to get:
 ```
 
 <ul>
