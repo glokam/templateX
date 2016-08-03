@@ -4,15 +4,16 @@
         ltReg = /</g,
         gtReg = />/g;
     
-    $.fn.templateX = function (dataObj, selector) {
-        var template;
-        
+    $.fn.templateX = function (dataObj, selector, string) {
+        var template, 
+            str = (!string && typeof string !== 'string')? this.html() : string;
+            
             data = dataObj;
-            template = _render(this.html());
+            template = _render(str);
             if (selector) {
                 return $(selector).html(template);
             } else {
-                return  _render(this.html());
+                return template;
             }
         };
     
