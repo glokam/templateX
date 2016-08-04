@@ -3,13 +3,13 @@
 
 ### SYNTAX
 
-> jQuery(**selectorA**).templateX(**obj**,**selectorB**[, *template*]);
+> jQuery(**selectorA**).templateX(**obj**, **selectorB** [, *template*]);
 
 **selectorA** - _string_
 
 CSS selector to get your template:
 
-In this case **'#-template'**:
+In this case *'#-template'*:
 ```
 <script id='x-template' type='text/template'>
 
@@ -23,20 +23,23 @@ In this case **'#-template'**:
 
 Object literal with data to render.
 
-F.e: **{name: 'John', surname: 'Doe'}**
+F.e: 
+```
+{name: 'John', surname: 'Doe'}
+```
 
 **selectorB** - _string_
 
 CSS selector of element or elements where your teplate has to be render:
 
-In this case **'#container'**:
+In this case *'#container'*:
 ```
 <p id='container'></p>
 ```
 
 **template** - _string_ - [optional]
  
-!!When you set **template** parameter, then **selectorA** will be ignored.
+!!When you set *template* parameter, then *selectorA* will be ignored.
 
 F.e:
 
