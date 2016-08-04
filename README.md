@@ -126,7 +126,7 @@ Result:
     }
 ```
 
-...it`s easy too, just use '.' prefix...
+...just use '.' prefix...
 ```
 <ul>
     {{#books}}<li>{{author}} - {{title}} ; {{.category}} </li>{{/books}}
