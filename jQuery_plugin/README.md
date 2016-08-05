@@ -9,7 +9,7 @@
 
 CSS selector to get your template:
 
-In this case *'#-template'*:
+In this case *'#x-template'*:
 ```
 <script id='x-template' type='text/template'>
 
