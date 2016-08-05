@@ -13,7 +13,7 @@ var template = '{{name}} {{surname}}';
 
 ```
 
-...but better way is to use _<script>_ tag...
+...but better way is to use _\<script\>_ tag...
 ```
 <script id='x-template' type='text/template'>
 
