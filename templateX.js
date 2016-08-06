@@ -81,7 +81,7 @@ var templateX = {};
                 ifContent, ifVal;    
 
             
-            if (indexEnd === -1) { console.error("Missing ending tag for {{" + opt.substring + "}}!!");} 
+            if (indexEnd === -1) { new Error("Missing tag for {{" + opt.substring + "}}!");} 
             
             ifContent = opt.strEnding.slice(0, indexEnd);
             opt.strEnding = opt.strEnding.slice(indexEnd + endTag.length);

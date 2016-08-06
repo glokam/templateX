@@ -53,7 +53,7 @@
                 indexEnd = opt.strEnding.indexOf(endTag),
                 cont = '', templ, val;    
                 
-            if (indexEnd === -1) { console.error("Missing ending tag for {{" + opt.substring + "}}!!");}
+                if (indexEnd === -1) { new Error("Missing tag for {{" + opt.substring + "}}!");}
                 
                 val = _renderTag(tag);
             
