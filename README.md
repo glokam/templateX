@@ -187,6 +187,6 @@ Result:
 
 ### CDN
 
-https://cdn.rawgit.com/glokam/templateX/3886e3b39938460cd6d9d469e6343264c6db2595/templateX.js
+https://cdn.rawgit.com/glokam/templateX/f07c0605f09e7c3765e3cd30f8639e8be753e508/templateX.min.js
 
 thanks to [Ryan Grove](https://github.com/rgrove)
