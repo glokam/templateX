@@ -1,6 +1,7 @@
 # templateX
 ## Simple templates
 
+[Playground - JSfiddle](https://jsfiddle.net/glokam/59kq2znp/)
 
 ### Syntax
 > templateX.render(**template**, **obj**);
@@ -183,3 +184,9 @@ Result:
     <li>Philip K. Dick - The Man in the Hight Castle ; science fiction</li>
 </ul>
 ```
+
+### CDN
+
+https://cdn.rawgit.com/glokam/templateX/3886e3b39938460cd6d9d469e6343264c6db2595/templateX.js
+
+thanks to [Ryan Grove](https://github.com/rgrove)
