@@ -15,13 +15,14 @@ var templateX = {};
         ltReg = /</g,
         gtReg = />/g,
         
-        //Public method render(html string, object with data )
+    //Public method render(html string, object with data )
         
         tX = nspace.render = function (template, dataObj) {
             data = dataObj;
             return  _render(template);
         };
     
+    //Private utilities
     function getdata(opt) {
         var tag = opt.substring,
             firstChar = tag.charAt(0);
@@ -31,8 +32,7 @@ var templateX = {};
         if (firstChar === '&') return opt.strBegining + _renderTag(opt.substring.slice(1), true) + opt.strEnding;
         return opt.strBegining + _renderTag(opt.substring) + opt.strEnding;
         };
-    
-        //Private utilities
+
     function _render(template) {
         var indexStart = template.indexOf('{{'),
             indexEnd = template.indexOf('}}'),
