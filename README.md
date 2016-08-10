@@ -1,5 +1,5 @@
 # templateX
-## Simple templates
+## Easy templates with JavaScript
 
 [Playground - JSfiddle](https://jsfiddle.net/glokam/59kq2znp/)
 
