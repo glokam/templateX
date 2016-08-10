@@ -1,7 +1,11 @@
 {
   "name": "templatex",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Easy templates with JavaScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glokam/templateX.git"
+  },
   "main": "templatex.js",
   "keywords": [
     "template",
