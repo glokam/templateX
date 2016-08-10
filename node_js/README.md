@@ -31,7 +31,7 @@ templateX.render(template, obj) // result: "Hello, Johnny"
  favalbums: [
 {name: "American Recordings", author: "Johnny Cash"},
 {name: "Train A-Comin’", author: "Steve Earle"},
-],
+]
 }
 ```
 
@@ -40,6 +40,7 @@ templateX.render(template, obj) // result: "Hello, Johnny"
 ```
 <p>My name is {{name}}, and I love {{details.hobby}}!</p>
 <p>My name is {{name}}, and I love {{&details.hobby}}!</p>
+
 \\result of first: "<p>My name is Simon, and I love country &lt;b&gt;music &lt;/b&gt;!</p>"
 \\result of '&' tag: "<p>My name is Simon, and I love country <b>music</b>!</p>"
 ```
@@ -49,6 +50,7 @@ as "true" statement
 ```
 {{#details.job}}We have information about {{name}} job{{/details.job}}{{#details.family}} and family{{/details.family}}!!
 {{%details.job}}We have information about {{name}} job{{/details.job}}{{%details.family}} and family{{/details.family}}!!
+
 \\BOTH result "We have information about Simon job!!"
 ```
 as loop we can only use '#' tag
@@ -77,12 +79,14 @@ as loop we can only use '#' tag
 as "true" statement
 ```
 {{^details.family}}We don`t have information about {{name}} family{{/details.family}}{{^details.job}} and job{{/details.job}}!!
+
 \\result "We don`t have information about Simon family!!"
 ```
 > {%{ text }}
 
 ```
 {%{My name is {{name}}!}}
+
 //result "{{My name is Simon!}}"
 ```
 
