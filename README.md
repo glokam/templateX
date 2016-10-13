@@ -7,16 +7,16 @@
 
 ### Getting started
 
-```
+```js
 npm install templatex
 ```
 or
 
-```
+```js
 npm install --save templatex
 ```
 
-```
+```js
 var templateX = require('templatex'),
     template = "{{message}}, {{name}}",
     obj = {message: "Hello", name: "Johnny"};
@@ -26,7 +26,7 @@ templateX.render(template, obj) // result: "Hello, Johnny"
 
 ### Tags:
 
-```
+```js
 {name: 'Simon',
  details: [
     job: 'programmer',
@@ -41,7 +41,7 @@ templateX.render(template, obj) // result: "Hello, Johnny"
 
 > {{*property*}} and {{&*property*}}
 
-```
+```html
 <p>My name is {{name}}, and I love {{details.hobby}}!</p>
 <p>My name is {{name}}, and I love {{&details.hobby}}!</p>
 
@@ -51,14 +51,14 @@ templateX.render(template, obj) // result: "Hello, Johnny"
 > {{#*property*}}*content*{/*property*}} and {{%*property*}}*content*{{/*property*}}
 
 as "true" statement
-```
+```html
 {{#details.job}}We have information about {{name}} job{{/details.job}}{{#details.family}} and family{{/details.family}}!!
 {{%details.job}}We have information about {{name}} job{{/details.job}}{{%details.family}} and family{{/details.family}}!!
 
 \\BOTH result "We have information about Simon job!!"
 ```
 as loop we can only use '#' tag
-```
+```html
 <ul>
 {{#favalbums}}<li>{{name}} by {{author}}</li>{{/favalbums}}
 </ul>
@@ -81,7 +81,7 @@ as loop we can only use '#' tag
 > {{^*property*}}*content*{/*property*}}
 
 as "true" statement
-```
+```html
 {{^details.family}}We don`t have information about {{name}} family{{/details.family}}{{^details.job}} and job{{/details.job}}!!
 
 \\result "We don`t have information about Simon family!!"
@@ -97,7 +97,7 @@ as "true" statement
 > {{.*property}}
 
 When looping...
-```
+```html
 <ul>
 {{#favalbums}}<li>I am {{.name}} and I love {{name}} by {{author}}</li>{{/favalbums}}
 </ul>
