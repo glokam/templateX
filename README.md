@@ -23,6 +23,44 @@ var templateX = require('templatex'),
 
 templateX.render(template, obj) // result: "Hello, Johnny"
 ```
+### templateX with Express >= 1.2.0 
+
+From version 1.2.0, you can use templateX as Express template engine using express method.
+
+
+hello.html file in /views folder:
+
+```html
+<h1>Hello, {{name}}</h1>
+
+```
+
+APP js file:
+```js
+
+var express = require('express');
+    app = express(),
+    templatex = require('templatex');    
+
+app.engine('html', templatex.express);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+
+
+app.get('/', function(req, res) {
+    res.render('hello', {name: 'World'});
+});
+
+
+app.use(function (req, res) {
+    res.sendStatus(404);
+});
+
+var server = app.listen(8000);
+
+```
+
+
 
 ### Tags:
 
