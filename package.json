@@ -1,6 +1,6 @@
 {
   "name": "templatex",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Easy templates with JavaScript",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
   "main": "./lib/templatex.js",
   "keywords": [
     "template",
-    "templates"
+    "templates",
+    "processor",
+    "parser",
+    "template parser",
+    "template processor",
+    "express template engine"
   ],    
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
